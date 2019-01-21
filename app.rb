@@ -44,9 +44,15 @@ post '/visit' do
   #   :phone => 'Введите телефон', 
   #   :date_time => 'Введите дату и время'}
 
-	Client.create(name: "#{@user_name}", phone: "#{@phone}", datastamp: "#{@date_time}", barber: "#{@barber}", color: "#{@color}")
+	c = Client.new 
+	c.name = @user_name
+	c.phone = @phone
+	c.datastamp = @date_time
+	c.barber = @barber
+	c.color = @color
+	c.save
 
-  erb "<h1>Спасибо, Вы записались!</h2>"
+  	erb "<h1>Спасибо, Вы записались!</h2>"
 
 end
 
